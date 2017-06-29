@@ -9,16 +9,23 @@
 import UIKit
 
 class ViewController: UIViewController {
-
-    @IBOutlet weak var sampleView: SampleView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // for giggles and grins, let's print the list of friends views
+        guard let friendsViewController = childViewControllers.first as? FriendCollectionViewController else {
+            fatalError("no friends view controller")
+        }
         
-        print(sampleView.friends)
+        friendsViewController.friendDelegate = self
+        friendsViewController.friends = Array(1 ... 100).map { Friend(name: "\($0)") }
     }
 
+}
+
+extension ViewController: FriendCollectionViewControllerDelegate {
+    func friendCollectionView(_ friendCollectionView: FriendCollectionViewController, didSelectItemAt indexPath: IndexPath, friend: Friend) {
+        print("selected \(friend)")
+    }
 }
 

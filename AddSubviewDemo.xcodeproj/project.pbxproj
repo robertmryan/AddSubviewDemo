@@ -12,7 +12,9 @@
 		830643B41F0587B700D9E85C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 830643B21F0587B700D9E85C /* Main.storyboard */; };
 		830643B61F0587B700D9E85C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 830643B51F0587B700D9E85C /* Assets.xcassets */; };
 		830643B91F0587B700D9E85C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 830643B71F0587B700D9E85C /* LaunchScreen.storyboard */; };
-		830643C11F0587D300D9E85C /* SampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830643C01F0587D300D9E85C /* SampleView.swift */; };
+		830643C41F05A1CD00D9E85C /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830643C31F05A1CD00D9E85C /* Friend.swift */; };
+		830643C61F05A1FD00D9E85C /* FriendCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830643C51F05A1FD00D9E85C /* FriendCollectionViewController.swift */; };
+		830643C81F05A26700D9E85C /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830643C71F05A26700D9E85C /* FriendCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,8 +25,10 @@
 		830643B51F0587B700D9E85C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		830643B81F0587B700D9E85C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		830643BA1F0587B700D9E85C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		830643C01F0587D300D9E85C /* SampleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleView.swift; sourceTree = "<group>"; };
 		830643C21F058A3D00D9E85C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		830643C31F05A1CD00D9E85C /* Friend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
+		830643C51F05A1FD00D9E85C /* FriendCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendCollectionViewController.swift; sourceTree = "<group>"; };
+		830643C71F05A26700D9E85C /* FriendCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +64,9 @@
 			children = (
 				830643AE1F0587B700D9E85C /* AppDelegate.swift */,
 				830643B01F0587B700D9E85C /* ViewController.swift */,
-				830643C01F0587D300D9E85C /* SampleView.swift */,
+				830643C51F05A1FD00D9E85C /* FriendCollectionViewController.swift */,
+				830643C71F05A26700D9E85C /* FriendCell.swift */,
+				830643C31F05A1CD00D9E85C /* Friend.swift */,
 				830643B21F0587B700D9E85C /* Main.storyboard */,
 				830643B51F0587B700D9E85C /* Assets.xcassets */,
 				830643B71F0587B700D9E85C /* LaunchScreen.storyboard */,
@@ -143,8 +149,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				830643B11F0587B700D9E85C /* ViewController.swift in Sources */,
-				830643C11F0587D300D9E85C /* SampleView.swift in Sources */,
+				830643C81F05A26700D9E85C /* FriendCell.swift in Sources */,
+				830643C61F05A1FD00D9E85C /* FriendCollectionViewController.swift in Sources */,
 				830643AF1F0587B700D9E85C /* AppDelegate.swift in Sources */,
+				830643C41F05A1CD00D9E85C /* Friend.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,6 +318,7 @@
 				830643BF1F0587B700D9E85C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
