@@ -10,6 +10,8 @@ import UIKit
 
 private let reuseIdentifier = "FriendCell"
 
+// define a protocol by which we can inform the parent view controller that a friend was selected
+
 protocol FriendCollectionViewControllerDelegate: class {
     func friendCollectionView(_ friendCollectionView: FriendCollectionViewController, didSelectItemAt indexPath: IndexPath, friend: Friend)
 }
@@ -17,9 +19,7 @@ protocol FriendCollectionViewControllerDelegate: class {
 class FriendCollectionViewController: UICollectionViewController {
 
     var friends: [Friend]? { didSet { collectionView?.reloadData() } }
-    
-    weak var friendDelegate: FriendCollectionViewControllerDelegate?
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -45,36 +45,12 @@ class FriendCollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDelegate
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        friendDelegate?.friendCollectionView(self, didSelectItemAt: indexPath, friend: friends![indexPath.row])
+        // let the parent view controller know that a friend was selected, but only if it conforms
+        // to our protocol
+        
+        if let parent = parent as? FriendCollectionViewControllerDelegate {
+            parent.friendCollectionView(self, didSelectItemAt: indexPath, friend: friends![indexPath.row])
+        }
     }
     
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-    
-    }
-    */
-
 }

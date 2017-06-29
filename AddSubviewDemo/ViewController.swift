@@ -17,7 +17,6 @@ class ViewController: UIViewController {
             fatalError("no friends view controller")
         }
         
-        friendsViewController.friendDelegate = self
         friendsViewController.friends = Array(1 ... 100).map { Friend(name: "\($0)") }
     }
 
