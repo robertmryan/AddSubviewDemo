@@ -31,7 +31,7 @@ class ProfileImageContainer: UIView {
 
 class SampleView: UIView {
     
-    var container: UIView!
+    var container: UIStackView!
     
     override init(frame: CGRect = .zero) {
         super.init(frame: frame)
@@ -46,12 +46,15 @@ class SampleView: UIView {
     }
         
     func configure()  {
-        container = UIView()
+        container = UIStackView()
         container.translatesAutoresizingMaskIntoConstraints = false
+        container.alignment = .center
+        container.distribution = .equalSpacing
+        
         addSubview(container)
         NSLayoutConstraint.activate([
-            container.leftAnchor.constraint(equalTo: leftAnchor),
-            container.rightAnchor.constraint(equalTo: rightAnchor),
+            container.leftAnchor.constraint(equalTo: leftAnchor, constant: 10),
+            container.rightAnchor.constraint(equalTo: rightAnchor, constant: -10),
             container.topAnchor.constraint(equalTo: topAnchor),
             container.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
@@ -76,13 +79,11 @@ class SampleView: UIView {
             
             let imageViewContainer = ProfileImageContainer()
         
-            container.addSubview(imageViewContainer)
+            container.addArrangedSubview(imageViewContainer)  // takes care of x and y coordinates for you; you only need to set width and height
             
             NSLayoutConstraint.activate([
                 imageViewContainer.widthAnchor.constraint(equalTo: container.widthAnchor, multiplier: 0.1),
-                imageViewContainer.heightAnchor.constraint(equalTo: container.heightAnchor, multiplier: 0.1),
-                NSLayoutConstraint(item: imageViewContainer, attribute: .centerX, relatedBy: .equal, toItem: container, attribute: .centerX, multiplier: 2 * CGFloat(friend + 1) / CGFloat(numberOfFriends + 1), constant: 0),
-                imageViewContainer.centerYAnchor.constraint(equalTo: container.centerYAnchor)
+                imageViewContainer.heightAnchor.constraint(equalTo: container.heightAnchor, multiplier: 0.1)
             ])
             
             friends.append(imageViewContainer)
