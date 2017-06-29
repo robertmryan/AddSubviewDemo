@@ -14,7 +14,10 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        // for giggles and grins, let's print the list of friends views
+        
+        print(sampleView.friends)
     }
 
 }

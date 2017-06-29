@@ -46,7 +46,7 @@ class SampleView: UIView {
     }
         
     func configure()  {
-        let container = UIView()
+        container = UIView()
         container.translatesAutoresizingMaskIntoConstraints = false
         addSubview(container)
         NSLayoutConstraint.activate([
@@ -55,25 +55,37 @@ class SampleView: UIView {
             container.topAnchor.constraint(equalTo: topAnchor),
             container.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
+        
+        createProfileImageContainers(numberOfFriends: 5)
     }
 
+    var friends = [UIView]()
+    
     private func createProfileImageContainers(numberOfFriends: Int) {
         
-        for friends in 1...numberOfFriends {
-            
-            print(friends)
+        // remove old friends in case you called this before
+        
+        friends.forEach { $0.removeFromSuperview() }
+        friends.removeAll()
+
+        // now add friends 
+        
+        for friend in 0 ..< numberOfFriends {     // easier to go from 0 to numberOfFriends-1 than subtract one later
+        
+            print(friend)
             
             let imageViewContainer = ProfileImageContainer()
+        
+            container.addSubview(imageViewContainer)
             
-            addSubview(imageViewContainer)
+            NSLayoutConstraint.activate([
+                imageViewContainer.widthAnchor.constraint(equalTo: container.widthAnchor, multiplier: 0.1),
+                imageViewContainer.heightAnchor.constraint(equalTo: container.heightAnchor, multiplier: 0.1),
+                NSLayoutConstraint(item: imageViewContainer, attribute: .centerX, relatedBy: .equal, toItem: container, attribute: .centerX, multiplier: 2 * CGFloat(friend + 1) / CGFloat(numberOfFriends + 1), constant: 0),
+                imageViewContainer.centerYAnchor.constraint(equalTo: container.centerYAnchor)
+            ])
             
-            NSLayoutConstraint(item: imageViewContainer, attribute: .width, relatedBy: .equal, toItem: container, attribute: .width, multiplier: 0.1, constant: 0).isActive = true
-            NSLayoutConstraint(item: imageViewContainer, attribute: .height, relatedBy: .equal, toItem: container, attribute: .width, multiplier: 0.1, constant: 0).isActive = true
-            
-            NSLayoutConstraint(item: imageViewContainer, attribute: .centerX, relatedBy: .equal, toItem: container, attribute: .centerX, multiplier: 0.5 + (CGFloat(friends - 1) / 50.0), constant: 0).isActive = true
-            
-            
-            NSLayoutConstraint(item: imageViewContainer, attribute: .centerY, relatedBy: .equal, toItem: container, attribute: .centerY, multiplier: 1, constant: 0).isActive = true
+            friends.append(imageViewContainer)
         }
         
     } 
