@@ -8,15 +8,24 @@
 
 import UIKit
 
-class profileImageContainer: UIView {
+class ProfileImageContainer: UIView {
     
-    let imageViewContainer: UIView = {
-        let iv = UIView()
-        iv.translatesAutoresizingMaskIntoConstraints = false
-        iv.backgroundColor = UIColor.blue
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         
-        return iv
-    }()
+        configure()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        configure()
+    }
+    
+    func configure() {
+        translatesAutoresizingMaskIntoConstraints = false
+        backgroundColor = .blue
+    }
     
 }
 
@@ -54,7 +63,7 @@ class SampleView: UIView {
             
             print(friends)
             
-            let imageViewContainer = profileImageContainer()
+            let imageViewContainer = ProfileImageContainer()
             
             addSubview(imageViewContainer)
             
